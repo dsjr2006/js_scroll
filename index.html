@@ -22,7 +22,7 @@
 <body>
 
 	Coding is <div id="magic"></div>
-
+	&nbsp;
 	<script>
 
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
@@ -33,8 +33,9 @@
 		function updateText()
 		{
 			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
-
-			if(character_counter == words[word_counter].length)
+            
+			console.log(words[word_counter][character_counter]);
+			if(character_counter == words[word_counter].length) //* Added +1 to reach end of word, was stopping a letter before end.
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -43,10 +44,12 @@
 				//if we're displaying the last word, go back to the first word
 				if(word_counter == words.length)
 					word_counter = 0;
-			}
+                  if (words[word_counter][character_counter] === undefined){
+                  el.innerHTML += '&nbsp;'}
+                }
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,100);
 
 	</script>
 
